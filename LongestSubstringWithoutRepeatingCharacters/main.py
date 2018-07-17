@@ -1,38 +1,28 @@
+"""See https://leetcode.com/problems/longest-substring-without-repeating-characters/description/"""
+from collections import deque
+
 class Solution:
-    def lengthOfLongestSubstring(self, s):
-        """
-        :type s: str
-        :rtype: int
-        """
-        if s == "":
-            return 0
-        elif len(s) == len("".join(set(s))):
-            return len(s)
-        else:
-            longest_substring = s[0]
-        for idx_1, w1 in enumerate(s):
-            print(f"{s} - {idx_1} {w1}")
-            tmp_string = ""
-            if len(longest_substring) > len(s[idx_1:]):
-                break
-            for idx_2, w2 in enumerate(s[idx_1:]):
-                print(f"w2: {w2}")
-                if w2 in tmp_string:
-                    ## find longest, break
-                    if len(tmp_string) > len(longest_substring):
-                        longest_substring = tmp_string
-                    break
-                else:
-                    tmp_string += w2
-            if len(tmp_string) > len(longest_substring):
-                longest_substring = tmp_string
-                print(f"tmp_string: {tmp_string}")
-                print(f"longest_substring: {longest_substring}")
+	def lengthOfLongestSubstring(self, s):
+		"""
+		:type s: str
+		:rtype: int
+		"""
+		if len(s) < 2:
+			return len(s)
+		dq = deque()
+		max_length = 0
+		for c in s:
+			print(f"{c} {dq}")
+			if c in dq:
+				while(len(dq) > 0):
+					print(f"dq: {dq}")
+					if(c == dq.popleft()):
+						break
+			dq.append(c)
+			if len(dq) > max_length:
+				max_length = len(dq)
 
-        print(f"longest_substring: {longest_substring}")
-        return len(longest_substring)
-
-
+		return max_length
 
 if __name__ == "__main__":
 
