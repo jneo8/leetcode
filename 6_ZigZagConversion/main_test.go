@@ -2,7 +2,7 @@ package zigzagconversion
 
 import "testing"
 
-func Test_main(t *testing.T) {
+func Test_convert(t *testing.T) {
 	type args struct {
 		s       string
 		numRows int
@@ -21,10 +21,18 @@ func Test_main(t *testing.T) {
             },
             want: "PINALSIGYAHRPI",
         },
+        {
+            name: "case2",
+            args: args{
+                s: "A",
+                numRows: 1,
+            },
+            want: "A",
+        },
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := main(tt.args.s, tt.args.numRows); got != tt.want {
+			if got := convert(tt.args.s, tt.args.numRows); got != tt.want {
 				t.Errorf("main() = %v, want %v", got, tt.want)
 			}
 		})
