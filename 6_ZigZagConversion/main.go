@@ -2,6 +2,8 @@ package zigzagconversion
 
 import "fmt"
 
-func main(){
-        fmt.Println("ZigZag Conversion")
+func main(s string, numRows int) string{
+    result := "ZigZag Conversion"
+    fmt.Println(result)
+    return result
 }
