@@ -18,6 +18,20 @@ func Test_reverse(t *testing.T) {
             },
             want: 321,
         },
+        {
+            name: "case2",
+            args: args{
+                x: -123,
+            },
+            want: -321,
+        },
+        {
+            name: "case3",
+            args: args{
+                x: 1534236469,
+            },
+            want: 0,
+        },
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
