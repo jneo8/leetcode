@@ -27,6 +27,21 @@ func Test_myAtoi(t *testing.T) {
             args: args{str: "words and 987"},
             want: 0,
         },
+        {
+            name: "case4",
+            args: args{str: "3.14159"},
+            want: 3,
+        },
+        {
+            name: "case5",
+            args: args{str: "+-2"},
+            want: 0,
+        },
+        {
+            name: "case6",
+            args: args{str: "    +0  123"},
+            want: 0,
+        },
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
